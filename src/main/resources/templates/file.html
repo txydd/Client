@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TXY project</title>
+    <script src="../viewer/static/js/jquery-3.2.1.js"></script>
+    <script src="../viewer/static/js/bootstrap.min.js"></script>
+    <script src="../viewer/static/js/bootstrap-datepicker.js"></script>
+    <script src="../viewer/static/js/locales/bootstrap-datepicker.zh-CN.js"></script>
+    <script src="../viewer/static/js/index.js"></script>
+    <script src="../viewer/static/js/intervalTaks.js"></script>
+
+    <link rel="stylesheet" href="../viewer/static/css/normalize.css">
+    <link rel="stylesheet" href="../viewer/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../viewer/static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../viewer/static/css/index.css">
+    <link rel="stylesheet" href="../viewer/static/css/iconfont.css">
+
+
+</head>
+<style>
+    .row{
+        text-align: center;
+    }
+</style>
+<body>
+<div class="container-fluid wxj_all">
+    <!--菜单-->
+    <div class="col-md-9 col-lg-10 wxj_content">
+        <div class="wxj_content_title" style="margin: 30px;">上传文件</div>
+        <div class="wxj_content_line"></div>
+        <div class="col-md-12 pdl0">
+            <form id="upload" class="form-horizontal" action="/viewer/upload" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="form-group col-md-12" style="margin: 30px;">
+                        <label for="file" class="col-sm-12 control-label">选择文件</label>
+                        <div class="col-sm-12">
+                            <input type="file"  class="form-control pull-left" name="file" id="file" style="width: 200px;" >
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3 pull-right" style="margin: 30px;">
+                        <label class="col-sm-12 control-label wxj_but_label">上传文件</label>
+                        <input type="submit"
+                               class="btn btn-success pull-right col-md-8 col-xs-4 wxj_but_mar15" id="save_setting" value="上传">
+                        </input>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-group col-md-3">
+        <div class="wxj_content_title" style="margin: 20px;" th:text="${result}"></div>
+            </div>
+
+        <div class="col-md-12 pdl0">
+    <div class="form-group col-md-3">
+        <label for="name" class="col-sm-12 control-label">原始文件名</label>
+        <div class="col-sm-12 ">
+            <input type="text"   class="form-control " disabled id="name" th:value="${name}">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="size" class="col-sm-12 control-label">文件大小</label>
+        <div class="col-sm-12">
+            <input type="text"   class="form-control " disabled id="size" th:value="${size}">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="type" class="col-sm-12 control-label">文件类型</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control " disabled id="type" th:value="${type}">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="time" class="col-sm-12 control-label">创建时间</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control " disabled id="time" th:value="${time}">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="address" class="col-sm-12 control-label">文件保存目录地址</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control " disabled id="address" th:value="${address}">
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+        <label for="password" class="col-sm-12 control-label">文件加密数字信封</label>
+        <div class="col-sm-12">
+            <input type="text" class="form-control " disabled id="password" th:value="${password}">
+        </div>
+    </div>
+
+            <div class="form-group col-md-3 pull-right" style="margin: 20px;">
+                <label class="col-sm-12 control-label wxj_but_label">下载文件</label>
+                <input type="submit"
+                       class="btn btn-success pull-right col-md-8 col-xs-4 wxj_but_mar15" id="download" value="下载">
+                </input>
+            </div>
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
+
+<script>
+
+
+
+
+    $('#download').click(function(){
+        var fileName=$('#name').val();
+        window.location.href ='/viewer/download?fileName='+fileName;
+
+    })
+
+
+</script>

@@ -1,0 +1,67 @@
+html, body {
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #001737;
+    -webkit-overflow-scrolling: touch;
+    /*background-color: #21212d;*/
+}
+
+.wxj_login_area {
+    /*width: 500px;*/
+    padding: 40px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.wxj_login_area_input {
+    /*background: #2a2a38;*/
+    /*width: 100%;*/
+    /*padding: 40px 0 20px 0;*/
+    /*color: #ffffff;*/
+    /*overflow: hidden;*/
+    /*border-radius: 4px;*/
+    /*box-shadow: 0 0 30px 0 #131321;*/
+}
+#submit_area{
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.wxj_login_title {
+    font-size: 24px;
+    line-height: 100px;
+}
+
+.wxj_login_but,.wxj_login_but:hover {
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px;
+    background: #273fc3;
+    color: #fff;
+    padding: 6px 70px;
+    border: none;
+}
+
+.wxj_login_tips {
+    text-align: right;
+    padding: 0 30px 0 15px;
+    color: #8392a5;
+}
+
+.login_code {
+    height: 34px;
+    /*width: 100%;*/
+    vertical-align: middle
+}
+
+@media (max-width: 700px) {
+    .wxj_login_area {
+        width: unset;
+    }
+
+    .login_code {
+        margin-top: 20px;
+    }
+}

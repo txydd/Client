@@ -1,0 +1,23 @@
+server:
+   port: 8000
+   servlet:
+     context-path: /viewer
+
+spring:
+    servlet:
+       multipart:
+         max-file-size: 1000MB
+         max-request-size: 10000MB
+
+    thymeleaf:
+        mode: HTML5
+        encoding: UTF-8
+        prefix: classpath:/templates/
+        suffix: .html
+        cache: false
+
+    resources:
+            static-locations: classpath:/, file:${spring.servlet.multipart.location}
+
+
+

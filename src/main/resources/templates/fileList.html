@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TXY Project</title>
+    <script src="../viewer/static/js/jquery-3.2.1.js"></script>
+    <script src="../viewer/static/js/bootstrap.min.js"></script>
+    <script src="../viewer/static/js/bootstrap-datepicker.js"></script>
+    <script src="../viewer/static/js/locales/bootstrap-datepicker.zh-CN.js"></script>
+    <script src="../viewer/static/js/index.js"></script>
+    <script src="../viewer/static/js/intervalTaks.js"></script>
+
+    <!--<script src="../static/js/admin.js"></script>-->
+    <link rel="stylesheet" href="../viewer/static/css/normalize.css">
+    <link rel="stylesheet" href="../viewer/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../viewer/static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../viewer/static/css/index.css">
+    <link rel="stylesheet" href="../viewer/static/css/iconfont.css">
+
+</head>
+<style>
+    .row{
+        text-align: center;
+    }
+</style>
+
+<body>
+<div class="container-fluid wxj_all">
+    <!--菜单-->
+
+    <!--内容区域-->
+
+    <!--<div class="col-md-9 col-lg-10 wxj_content">-->
+        <div class="wxj_content_title" style="">最近上传文件清单</div>
+
+        <div class="wxj_content_line" style=""></div>
+        <div class="col-md-12 pdl0 pdr0 table-responsive">
+            <table class="table table-hover table-striped">
+                <tr>
+
+                    <th>原始文件名</th>
+                    <th>文件大小</th>
+                    <th>文件类型</th>
+                    <th>创建时间</th>
+                    <th>文件保存目录地址</th>
+                    <th>文件加密数字信封</th>
+                    <th>操作</th>
+                </tr>
+                <tr th:each="list:${fileList}">
+
+                    <td th:text="${list.name}" ></td>
+                    <td th:text="${list.size}" ></td>
+                    <td th:text="${list.type}" ></td>
+                    <td th:text="${list.time}" ></td>
+                    <td th:text="${list.address}" ></td>
+                    <td th:text="${list.password}" ></td>
+
+                    <!--<td><a th:href="'https://workflow-staging.infinitus-int.com/WorkflowServicePlatform/Process.aspx?'+${list.processUrl}">查看详情</a></td>-->
+                    <td class="wxj_res_download"  th:uuid="${list.uuid}" th:name="${list.name}" th:password="${list.password}" id="file_download">下载</td>
+
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+<!--</div>-->
+</body>
+</html>
+
+<script>
+    $('#file_download').click(function(){
+        var fileName=$(this).attr("name");
+        var uuid=$(this).attr("uuid");
+        var password=$(this).attr("password");
+        window.location.href ='/viewer/download?uuid='+uuid+'&fileName='+fileName+'&password='+password;
+
+    })
+
+</script>
